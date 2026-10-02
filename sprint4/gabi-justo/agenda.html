@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Timeline - Agenda</title>
+  <link rel="stylesheet" href="agenda.css">
+</head>
+<body>
+
+  <header>
+    <!-- Clicar no nome volta para a página inicial -->
+    <a href="index.html"><strong>Timeline</strong></a>
+    <button class="user-btn">Dados de demonstração</button>
+  </header>
+
+  <div class="grid">
+    <div class="col-main">
+      <h1>Agenda</h1>
+      <p style="font-size: 13px; color: #64748b;">Semana 1 a 5 de setembro</p>
+
+      <!-- Sistema de abas funcionais -->
+      <div class="tabs">
+        <button class="tab active">Dia</button>
+        <button class="tab">Semana</button>
+        <button class="tab">Matéria</button>
+      </div>
+
+      <div class="box">
+        <h3>Compromissos do dia</h3>
+
+        <div class="event">
+          <span class="time">09:00</span>
+          <div>
+            <h4>Aula</h4>
+            <p style="font-size:12px; color:#64748b; margin-bottom:5px;">Cálculo 2</p>
+            <span class="pill">Aula</span>
+            <span class="pill">Pendente</span>
+          </div>
+        </div>
+
+        <div class="event">
+          <span class="time">14:00</span>
+          <div>
+            <h4>Entrega — Lista Contabilidade</h4>
+            <p style="font-size:12px; color:#64748b; margin-bottom:5px;">Contabilidade</p>
+            <span class="pill">Entrega</span>
+            <span class="pill pill-yellow">Prioridade Alta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-side">
+      <div class="box">
+        <h3>Revisão de exercícios</h3>
+        <p style="font-size: 12px; color: #64748b;">Separar dúvidas antes da aula.</p>
+      </div>
+
+      <div class="box">
+        <h3>Esta semana</h3>
+        
+        <p style="font-size:12px; display:flex; justify-content:space-between; margin-top:10px;">
+          <span>Tarefas concluídas</span><strong>3 de 5</strong>
+        </p>
+        <div class="bar"><div class="fill" style="width: 60%;"></div></div>
+
+        <p style="font-size:12px; display:flex; justify-content:space-between;">
+          <span>Metas da semana</span><strong>4 de 6</strong>
+        </p>
+        <div class="bar"><div class="fill" style="width: 66%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script simples para fazer a troca visual das abas ao clicar -->
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
