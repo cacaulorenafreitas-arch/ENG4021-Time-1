@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Nova atividade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cadastro-atividade.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- TOPO -->
+        <header class="topo">
+            <a href="hoje-amaral.html" class="voltar">&#8249;</a>
+            <h1>Nova atividade</h1>
+            <a href="hoje-amaral.html" class="salvar-topo">Salvar</a>
+        </header>
+
+        <main class="conteudo">
+
+            <!-- NOME -->
+            <div class="campo">
+                <label>Nome da atividade</label>
+                <input type="text" class="entrada entrada-nome" value="Lista 4 — Integrais de superfície">
+            </div>
+
+            <!-- TIPO -->
+            <div class="campo">
+                <label>Tipo</label>
+                <div class="tipos">
+                    <span class="pilula">Prova</span>
+                    <span class="pilula">Trabalho</span>
+                    <span class="pilula selecionada">Lista</span>
+                    <span class="pilula">Leitura</span>
+                    <span class="pilula">Projeto</span>
+                </div>
+            </div>
+
+            <!-- DISCIPLINA -->
+            <div class="campo">
+                <label>Disciplina</label>
+                <div class="entrada caixa-disciplina">
+                    <span class="bolinha-disciplina"></span>
+                    <span>Cálculo III</span>
+                    <span class="seta">&#8964;</span>
+                </div>
+            </div>
+
+            <!-- PRAZO -->
+            <div class="campo">
+                <label>Prazo</label>
+                <div class="prazo">
+                    <div class="entrada caixa-data">
+                        <span>Qui, 11 set</span>
+                        <span class="icone-data">&#9638;</span>
+                    </div>
+                    <div class="entrada caixa-hora">23:59</div>
+                </div>
+            </div>
+
+            <!-- DETALHAR -->
+            <div class="detalhar">
+                <div class="titulo-detalhar">
+                    <span>Detalhar (opcional)</span>
+                    <span>&#8963;</span>
+                </div>
+
+                <div class="bloco-opcional">
+
+                    <div class="linha-opcional">
+                        <span>Dificuldade</span>
+                        <div class="bolinhas">
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha"></span>
+                        </div>
+                    </div>
+
+                    <div class="linha-opcional">
+                        <span>Peso na nota</span>
+                        <strong class="valor">10%</strong>
+                    </div>
+
+                    <div class="linha-opcional">
+                        <span>Importância</span>
+                        <div class="bolinhas">
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha cheia"></span>
+                            <span class="bolinha"></span>
+                            <span class="bolinha"></span>
+                        </div>
+                    </div>
+
+                    <div class="linha-opcional">
+                        <span>Duração estimada</span>
+                        <strong class="valor">2h</strong>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- AVISO DE CONFLITO -->
+            <div class="aviso-conflito">
+                <span class="icone-aviso">!</span>
+                <p>Conflito de horário detectado — quinta, 10:15, com Física II.</p>
+            </div>
+
+            <a href="hoje-amaral.html" class="botao-salvar">Salvar atividade</a>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

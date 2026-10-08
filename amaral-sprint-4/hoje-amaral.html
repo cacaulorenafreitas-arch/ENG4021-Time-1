@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Hoje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hoje-amaral.css">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- SAUDACAO -->
+        <header class="saudacao">
+            <div>
+                <h1>Bom dia, João</h1>
+                <p>quinta-feira, 10 de setembro</p>
+            </div>
+            <span class="sino">&#128276;</span>
+        </header>
+
+        <main class="conteudo">
+
+            <!-- CARTAO DE FOCO -->
+            <section class="cartao-foco">
+                <span class="rotulo-foco">&#9679; AGORA</span>
+                <h2>Lista 4 — Integrais de superfície</h2>
+                <p>Cálculo III · até 12:15 · 2h</p>
+            </section>
+
+            <!-- PROGRESSO -->
+            <div class="progresso">
+                <div class="barra">
+                    <div class="barra-preenchida"></div>
+                </div>
+                <span>3 de 7 tarefas</span>
+            </div>
+
+            <!-- PROXIMAS HORAS -->
+            <h3 class="titulo-secao">Próximas horas</h3>
+
+            <div class="linha-hora">
+                <span class="hora">12:30</span>
+                <div class="bloco tracejado">Almoço</div>
+            </div>
+
+            <div class="linha-hora">
+                <span class="hora">14:00</span>
+                <div class="bloco fixo">Física II — aula</div>
+            </div>
+
+            <div class="linha-hora">
+                <span class="hora">16:00</span>
+                <div class="bloco tracejado livre">45 min livres</div>
+            </div>
+
+            <!-- PENDENTES -->
+            <h3 class="titulo-secao">Pendentes</h3>
+
+            <div class="tarefa">
+                <input type="checkbox" class="caixa-tarefa">
+                <div>
+                    <h4>Relatório de Física II</h4>
+                    <div class="etiquetas">
+                        <span class="etiqueta fisica">Física II</span>
+                        <span class="etiqueta alta">Alta</span>
+                        <span class="detalhe">3h · prazo seg</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <input type="checkbox" class="caixa-tarefa">
+                <div>
+                    <h4>Leitura Cap. 5 — Mecânica dos Sólidos</h4>
+                    <div class="etiquetas">
+                        <span class="etiqueta mecanica">Mecânica</span>
+                        <span class="etiqueta media">Média</span>
+                        <span class="detalhe">40min · prazo sex</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarefa">
+                <input type="checkbox" class="caixa-tarefa">
+                <div>
+                    <h4>Lista 2 — Estatística</h4>
+                    <div class="etiquetas">
+                        <span class="etiqueta estatistica">Estatística</span>
+                        <span class="etiqueta baixa">Baixa</span>
+                        <span class="detalhe">1h30 · prazo qua</span>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- BOTAO ADICIONAR -->
+        <a href="cadastro-atividade.html" class="botao-flutuante">+</a>
+
+        <!-- MENU INFERIOR -->
+        <nav class="menu-inferior">
+            <a href="hoje-amaral.html" class="item-menu ativo">
+                <span class="icone-menu">&#9719;</span>
+                Hoje
+            </a>
+            <a href="#" class="item-menu">
+                <span class="icone-menu">&#9776;</span>
+                Agenda
+            </a>
+            <a href="cadastro-atividade.html" class="item-menu">
+                <span class="icone-menu">+</span>
+                Adicionar
+            </a>
+            <a href="#" class="item-menu">
+                <span class="icone-menu">&#9638;</span>
+                Calendário
+            </a>
+            <a href="#" class="item-menu">
+                <span class="icone-menu">&#9786;</span>
+                Perfil
+            </a>
+        </nav>
+
+    </div>
+
+</body>
+
+</html>

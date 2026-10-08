@@ -1,0 +1,286 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #e9e9f3;
+    color: #202238;
+}
+
+.tela {
+    width: 100%;
+    max-width: 390px;
+    min-height: 844px;
+    margin: 0 auto;
+    background-color: #f8f8fc;
+}
+
+
+/* TOPO */
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    background-color: white;
+    border-bottom: 1px solid #e3e4ec;
+}
+
+.topo h1 {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.voltar {
+    width: 52px;
+    font-size: 32px;
+    line-height: 20px;
+    color: #202238;
+    text-decoration: none;
+}
+
+.salvar-topo {
+    width: 52px;
+    text-align: right;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #5558c9;
+    text-decoration: none;
+}
+
+
+/* CAMPOS */
+
+.conteudo {
+    padding: 24px 16px 32px 16px;
+}
+
+.campo {
+    margin-bottom: 22px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #62657a;
+}
+
+.entrada {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #202238;
+}
+
+.entrada-nome {
+    height: 56px;
+    font-weight: 600;
+}
+
+.entrada-nome:focus {
+    outline: none;
+    border-color: #7477e8;
+}
+
+
+/* TIPOS */
+
+.tipos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.pilula {
+    padding: 8px 11px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #62657a;
+}
+
+.pilula.selecionada {
+    background-color: #7477e8;
+    border-color: #7477e8;
+    color: white;
+    font-weight: 600;
+}
+
+
+/* DISCIPLINA */
+
+.caixa-disciplina {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.bolinha-disciplina {
+    width: 10px;
+    height: 10px;
+    background-color: #7477e8;
+    border-radius: 50%;
+}
+
+.seta {
+    margin-left: auto;
+    font-size: 18px;
+    color: #9699aa;
+}
+
+
+/* PRAZO */
+
+.prazo {
+    display: flex;
+    gap: 12px;
+}
+
+.caixa-data {
+    flex: 1.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.caixa-hora {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.icone-data {
+    color: #9699aa;
+}
+
+
+/* DETALHAR */
+
+.detalhar {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #e3e4ec;
+}
+
+.titulo-detalhar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5558c9;
+}
+
+.bloco-opcional {
+    padding: 6px 16px;
+    background-color: #f3f2ff;
+    border: 1px solid #e6e5f8;
+    border-radius: 16px;
+}
+
+.linha-opcional {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    font-size: 15px;
+    color: #62657a;
+}
+
+.bolinhas {
+    display: flex;
+    gap: 8px;
+}
+
+.bolinha {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 50%;
+}
+
+.bolinha.cheia {
+    background-color: #7477e8;
+    border-color: #7477e8;
+}
+
+.valor {
+    padding: 6px 14px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #202238;
+}
+
+
+/* AVISO */
+
+.aviso-conflito {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    padding: 14px 16px;
+    background-color: #fbf0e4;
+    border: 1px solid #f0d8b8;
+    border-radius: 14px;
+    color: #8a5a12;
+}
+
+.aviso-conflito p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.icone-aviso {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #c98b2b;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 18px;
+    color: #c98b2b;
+}
+
+
+/* BOTAO */
+
+.botao-salvar {
+    display: block;
+    padding: 17px;
+    background-color: #7477e8;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(116, 119, 232, 0.35);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+}
+
+.botao-salvar:hover {
+    background-color: #5558c9;
+}

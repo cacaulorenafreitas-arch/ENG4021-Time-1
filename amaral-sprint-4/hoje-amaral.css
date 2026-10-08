@@ -1,0 +1,303 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #e9e9f3;
+    color: #202238;
+}
+
+.tela {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    min-height: 844px;
+    margin: 0 auto;
+    padding-bottom: 170px;
+    background-color: #f8f8fc;
+}
+
+
+/* SAUDACAO */
+
+.saudacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 28px 20px 8px 20px;
+}
+
+.saudacao h1 {
+    margin: 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.saudacao p {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #9699aa;
+}
+
+.sino {
+    font-size: 20px;
+    filter: grayscale(1);
+    opacity: 0.7;
+}
+
+.conteudo {
+    padding: 8px 16px;
+}
+
+
+/* CARTAO DE FOCO */
+
+.cartao-foco {
+    margin-top: 12px;
+    padding: 20px;
+    background-color: #7477e8;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(116, 119, 232, 0.3);
+    color: white;
+}
+
+.rotulo-foco {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.cartao-foco h2 {
+    margin: 10px 0 8px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.cartao-foco p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+
+/* PROGRESSO */
+
+.progresso {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 22px 0 8px 0;
+}
+
+.barra {
+    flex: 1;
+    height: 8px;
+    background-color: #e6e6fa;
+    border-radius: 10px;
+}
+
+.barra-preenchida {
+    width: 43%;
+    height: 8px;
+    background-color: #3ead87;
+    border-radius: 10px;
+}
+
+.progresso span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #62657a;
+}
+
+
+/* TITULOS DAS SECOES */
+
+.titulo-secao {
+    margin: 22px 0 10px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #9699aa;
+}
+
+
+/* PROXIMAS HORAS */
+
+.linha-hora {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.hora {
+    width: 38px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #9699aa;
+}
+
+.bloco {
+    flex: 1;
+    padding: 11px 14px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #62657a;
+}
+
+.bloco.tracejado {
+    border-style: dashed;
+}
+
+.bloco.fixo {
+    font-weight: 600;
+    color: #202238;
+}
+
+.bloco.livre {
+    background-color: transparent;
+    color: #9699aa;
+}
+
+
+/* TAREFAS PENDENTES */
+
+.tarefa {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 14px;
+    background-color: white;
+    border: 1px solid #e3e4ec;
+    border-radius: 16px;
+}
+
+.tarefa h4 {
+    margin: 0 0 8px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.caixa-tarefa {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    accent-color: #7477e8;
+}
+
+.etiquetas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.etiqueta {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.fisica {
+    background-color: #e3eefb;
+    color: #2f6db5;
+}
+
+.mecanica {
+    background-color: #dff3ec;
+    color: #2a7d5f;
+}
+
+.estatistica {
+    background-color: #fcf0d6;
+    color: #a8741a;
+}
+
+.alta {
+    background-color: #fcf0d6;
+    color: #a8741a;
+}
+
+.media {
+    background-color: #ececff;
+    color: #5558c9;
+}
+
+.baixa {
+    background-color: #eeeff4;
+    color: #62657a;
+}
+
+.detalhe {
+    font-size: 13px;
+    color: #9699aa;
+}
+
+
+/* BOTAO FLUTUANTE */
+
+.botao-flutuante {
+    position: absolute;
+    right: 20px;
+    bottom: 96px;
+    width: 56px;
+    height: 56px;
+    background-color: #7477e8;
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgba(116, 119, 232, 0.4);
+    text-align: center;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 54px;
+    color: white;
+}
+
+
+/* MENU INFERIOR */
+
+.menu-inferior {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 4px 18px 4px;
+    background-color: white;
+    border-top: 1px solid #e3e4ec;
+}
+
+.item-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #9699aa;
+    text-decoration: none;
+}
+
+.icone-menu {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.item-menu.ativo {
+    color: #7477e8;
+    font-weight: 600;
+}
