@@ -93,3 +93,92 @@ class Tarefa(models.Model):
 # Ao salvar pela view, use tarefa.full_clean() antes de tarefa.save().
 # save() sozinho não executa as validações do modelo.
 # Toda consulta deve ser filtrada pelo owner_id calculado no servidor.
+
+
+class Disciplina(models.Model):
+    periodo_id = models.IntegerField()
+    nome = models.CharField(max_length=120)
+    codigo = models.CharField(max_length=20, blank=True)
+    professor = models.CharField(max_length=120, blank=True)
+    cor_hex = models.CharField(max_length=7, blank=True)
+
+    def __str__(self):
+        return self.nome
+
+
+class Atividade(models.Model):
+    TIPOS = [
+        ("prova", "Prova"),
+        ("trabalho", "Trabalho"),
+        ("lista", "Lista"),
+        ("leitura", "Leitura"),
+        ("projeto", "Projeto"),
+        ("outro", "Outro"),
+    ]
+
+    STATUS = [
+        ("planejada", "Planejada"),
+        ("em_andamento", "Em andamento"),
+        ("concluida", "Concluída"),
+        ("nao_concluida", "Não concluída"),
+        ("em_risco", "Em risco"),
+        ("atrasada", "Atrasada"),
+    ]
+
+    usuario_id = models.IntegerField()
+    disciplina = models.ForeignKey(
+        Disciplina, on_delete=models.SET_NULL,
+        null=True, blank=True
+    )
+    titulo = models.CharField(max_length=120)
+    tipo = models.CharField(max_length=20, choices=TIPOS)
+    prazo = models.DateTimeField()
+    dificuldade = models.IntegerField(null=True, blank=True)
+    peso_nota = models.DecimalField(
+        max_digits=5, decimal_places=2,
+        null=True, blank=True
+    )
+    importancia = models.IntegerField(null=True, blank=True)
+    duracao_estimada_min = models.IntegerField(null=True, blank=True)
+    duracao_real_min = models.IntegerField(null=True, blank=True)
+    status = models.CharField(
+        max_length=20, choices=STATUS, default="planejada"
+    )
+    fragmentavel = models.BooleanField(default=False)
+    score_prioridade = models.DecimalField(
+        max_digits=8, decimal_places=2, default=0
+    )
+
+    def __str__(self):
+        return self.titulo
+
+
+class Compromisso(models.Model):
+    usuario_id = models.IntegerField()
+    titulo = models.CharField(max_length=120)
+    categoria = models.CharField(max_length=50)
+    inicio = models.DateTimeField()
+    fim = models.DateTimeField()
+    regra_recorrencia = models.TextField(blank=True)
+    flexivel = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.titulo
+
+
+class Planejamento(models.Model):
+    usuario_id = models.IntegerField()
+    semana_inicio = models.DateField()
+    semana_fim = models.DateField()
+    versao = models.PositiveIntegerField(default=1)
+    status = models.CharField(max_length=30, default="ativo")
+    gerado_em = models.DateTimeField(auto_now_add=True)
+    horas_disponiveis = models.DecimalField(
+        max_digits=7, decimal_places=2, default=0
+    )
+    horas_alocadas = models.DecimalField(
+        max_digits=7, decimal_places=2, default=0
+    )
+
+    def __str__(self):
+        return f"Planejamento {self.semana_inicio} - v{self.versao}"
