@@ -23,4 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("hoje/", views.hoje, name="hoje"),
     path("adicionar-tarefa/", views.adicionar_tarefa, name="adicionar_tarefa"),
+    path("", views.inicio, name="inicio"),
+    path("agenda/", views.agenda, name="agenda"),
 ]
