@@ -182,3 +182,37 @@ class Planejamento(models.Model):
 
     def __str__(self):
         return f"Planejamento {self.semana_inicio} - v{self.versao}"
+
+
+class Aula(models.Model):
+    disciplina = models.ForeignKey(Disciplina, on_delete=models.CASCADE)
+    dia_semana = models.PositiveSmallIntegerField()
+    hora_inicio = models.TimeField()
+    hora_fim = models.TimeField()
+    local = models.CharField(max_length=120, blank=True)
+
+    def _str_(self):
+        return f"{self.disciplina} - {self.hora_inicio}"
+
+
+class Execucao(models.Model):
+    atividade = models.ForeignKey(Atividade, on_delete=models.CASCADE)
+    tempo_previsto_min = models.PositiveIntegerField()
+    tempo_real_min = models.PositiveIntegerField(null=True, blank=True)
+    iniciado_em = models.DateTimeField(null=True, blank=True)
+    concluido_em = models.DateTimeField(null=True, blank=True)
+    desvio_percentual = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+
+    def _str_(self):
+        return f"Execução da atividade {self.atividade_id}"
+
+
+class AlertaCarga(models.Model):
+    planejamento = models.ForeignKey(Planejamento, on_delete=models.CASCADE)
+    indice_carga = models.DecimalField(max_digits=7, decimal_places=2)
+    nivel = models.CharField(max_length=30)
+    recomendacao = models.TextField(blank=True)
+    gerado_em = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"Alerta de carga {self.planejamento_id} - {self.nivel}"
