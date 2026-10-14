@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Agenda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/agenda-semana.css' %}">
+</head>
+
+<body>
+
+    <div class="tela">
+
+        <!-- TOPO: TITULO + ABAS -->
+        <header class="topo">
+            <div class="titulo-agenda">
+                <h1>Agenda</h1>
+                <p>Semana 1 a 5 de setembro</p>
+            </div>
+
+            <nav class="abas">
+                <a href="{% url 'hoje' %}" class="aba">Dia</a>
+                <a href="{% url 'agenda' %}" class="aba ativa">Semana</a>
+                <a href="#" class="aba">Matéria</a>
+                <a href="#" class="aba">Pessoais</a>
+                <a href="#" class="aba">Entregas</a>
+                <a href="#" class="aba">Responsabilidades</a>
+            </nav>
+        </header>
+
+        <div class="layout">
+
+            <!-- VISAO SEMANAL -->
+            <section class="visao-semanal">
+                <h2>Visão semanal</h2>
+
+                <div class="dias">
+
+                    <div class="dia">
+                        <h3>Segunda</h3>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">08:00</span>
+                            <span class="evento-nome">Leitura dirigida</span>
+                        </a>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">18:30</span>
+                            <span class="evento-nome">Academia</span>
+                        </a>
+                    </div>
+
+                    <div class="dia">
+                        <h3>Terça</h3>
+                        <a href="#" class="evento selecionado">
+                            <span class="evento-hora">10:00</span>
+                            <span class="evento-nome">Revisão de exercícios</span>
+                        </a>
+                    </div>
+
+                    <div class="dia">
+                        <h3>Quarta</h3>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">19:30</span>
+                            <span class="evento-nome">Aniversário da Marina</span>
+                        </a>
+                    </div>
+
+                    <div class="dia">
+                        <h3>Quinta-feira</h3>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">09:00</span>
+                            <span class="evento-nome">Aula</span>
+                        </a>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">14:00</span>
+                            <span class="evento-nome">Entrega — Lista Contabilidade</span>
+                        </a>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">18:00</span>
+                            <span class="evento-nome">Estágio</span>
+                        </a>
+                    </div>
+
+                    <div class="dia">
+                        <h3>Sexta</h3>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">07:30</span>
+                            <span class="evento-nome">Academia</span>
+                        </a>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">13:00</span>
+                            <span class="evento-nome">Relatório do estágio</span>
+                        </a>
+                        <a href="#" class="evento">
+                            <span class="evento-hora">16:00</span>
+                            <span class="evento-nome">Mapa mental</span>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- COLUNA LATERAL -->
+            <aside class="lateral">
+
+                <!-- DETALHES DO EVENTO -->
+                <section class="cartao detalhes">
+                    <span class="rotulo">Informações completas</span>
+                    <h2>Revisão de exercícios</h2>
+                    <p class="descricao">Separar dúvidas antes da próxima aula.</p>
+
+                    <ul class="informacoes">
+                        <li>
+                            <span class="info-rotulo"><span class="icone">&#9719;</span> Horário</span>
+                            <strong>10:00</strong>
+                        </li>
+                        <li>
+                            <span class="info-rotulo"><span class="icone">&#9776;</span> Matéria</span>
+                            <strong>Cálculo 2</strong>
+                        </li>
+                        <li>
+                            <span class="info-rotulo"><span class="icone">&#9638;</span> Duração</span>
+                            <strong>1h</strong>
+                        </li>
+                    </ul>
+
+                    <div class="etiquetas">
+                        <span class="etiqueta atividade">Atividade</span>
+                        <span class="etiqueta prioridade">Prioridade Média</span>
+                        <span class="etiqueta pendente">Pendente</span>
+                    </div>
+                </section>
+
+                <!-- PROGRESSO -->
+                <section class="cartao progresso">
+                    <div class="progresso-topo">
+                        <span class="icone-grande">&#9641;</span>
+                        <div>
+                            <span class="rotulo">Progresso</span>
+                            <h2>Esta semana</h2>
+                        </div>
+                    </div>
+
+                    <div class="meta">
+                        <div class="meta-linha">
+                            <span>Tarefas concluídas</span>
+                            <strong>3 de 5</strong>
+                        </div>
+                        <div class="barra"><div class="barra-preenchida" style="width: 60%;"></div></div>
+                    </div>
+
+                    <div class="meta">
+                        <div class="meta-linha">
+                            <span>Metas da semana</span>
+                            <strong>4 de 6</strong>
+                        </div>
+                        <div class="barra"><div class="barra-preenchida" style="width: 67%;"></div></div>
+                    </div>
+
+                    <div class="meta">
+                        <div class="meta-linha">
+                            <span>Dias organizados</span>
+                            <strong>5 dias</strong>
+                        </div>
+                        <div class="barra"><div class="barra-preenchida" style="width: 100%;"></div></div>
+                    </div>
+                </section>
+
+            </aside>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
