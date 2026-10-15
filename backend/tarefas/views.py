@@ -85,3 +85,10 @@ def inicio(request):
 
 def agenda(request):
     return render(request, "agenda.html")
+
+def notificacoes(request):
+    return render(request, "notificacoes.html")
+
+
+def progresso(request):
+    return render(request, "progresso.html")
