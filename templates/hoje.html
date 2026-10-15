@@ -56,7 +56,7 @@
 
             <div class="pagina-atual">
                 <strong>Hoje</strong>
-                <span>quarta-feira, 30 de setembro</span>
+                <span>{% now "l, j \d\e F" %}</span>
             </div>
 
             <div class="acoes-superiores">
@@ -104,7 +104,7 @@
                     <div>
                         <span>Para hoje</span>
                         <div class="numero-card">
-                            <strong>0</strong>
+                            <strong>{{ pendentes }}</strong>
                             <small>tarefas pendentes</small>
                         </div>
                     </div>
@@ -117,8 +117,8 @@
                     <div>
                         <span>Seu progresso hoje</span>
                         <div class="numero-card">
-                            <strong>0</strong>
-                            <small>de 0 concluídas</small>
+                            <strong>{{ concluidas }}</strong>
+                            <small>de {{ total_atividades }} concluídas</small>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     <div>
                         <span>Para acompanhar</span>
                         <div class="numero-card">
-                            <strong>0</strong>
+                            <strong>{{ pendentes }}</strong>
                             <small>tarefas em aberto</small>
                         </div>
                     </div>
@@ -148,24 +148,56 @@
                     <div class="topo-timeline">
                         <div>
                             <h2>Sua timeline de hoje</h2>
-                            <p>quarta-feira, 30 de setembro</p>
+                            <p>{% now "l, j \d\e F" %}</p>
                         </div>
 
-                        <span>0 atividades</span>
+                        <span>
+                            {{ atividades|length }}
+                            atividade{{ atividades|length|pluralize }}
+                        </span>
                     </div>
 
-                    <div class="timeline-vazia">
-                        <div class="icone-timeline">☷</div>
+                    {% if atividades %}
 
-                        <h3>Seu dia pode começar por aqui</h3>
+                        {% for atividade in atividades %}
+                            <div class="timeline-vazia">
+                                <h3>{{ atividade.titulo }}</h3>
 
-                        <p>
-                            Adicione uma atividade para hoje e encontre
-                            seu próximo passo.
-                        </p>
+                                <p>
+                                    Disciplina:
+                                    {% if atividade.disciplina %}
+                                        {{ atividade.disciplina.nome }}
+                                    {% else %}
+                                        Sem disciplina
+                                    {% endif %}
+                                </p>
 
-                        <a href="adicionar-tarefa.html">+ Adicionar uma tarefa</a>
-                    </div>
+                                <p>Tipo: {{ atividade.get_tipo_display }}</p>
+
+                                <p>Prazo: {{ atividade.prazo|date:"d/m/Y H:i" }}</p>
+
+                                <p>Status: {{ atividade.get_status_display }}</p>
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="timeline-vazia">
+                            <div class="icone-timeline">☷</div>
+
+                            <h3>Seu dia pode começar por aqui</h3>
+
+                            <p>
+                                Adicione uma atividade para hoje e encontre
+                                seu próximo passo.
+                            </p>
+
+                            <a href="{% url 'adicionar_tarefa' %}">
+                                + Adicionar uma tarefa
+                            </a>
+                        </div>
+
+                    {% endif %}    
 
                 </div>
 
@@ -201,46 +233,23 @@
                             <span>→</span>
                         </div>
 
-                        <p>28 de set — 4 de out de 2026</p>
+                        <p>
+                            {{ inicio_semana|date:"j \d\e M" }} —
+                            {{ fim_semana|date:"j \d\e M \d\e Y" }}
+                        </p>
 
-                        <div class="dias-semana">
+                    <div class="dias-semana">
 
-                            <div>
-                                <small>Seg</small>
-                                <strong>28</strong>
+                        {% for dia in dias_semana %}
+
+                            <div {% if dia == data_atual %}class="dia-atual"{% endif %}>
+                                <small>{{ dia|date:"D" }}</small>
+                                <strong>{{ dia|date:"j" }}</strong>
                             </div>
 
-                            <div>
-                                <small>Ter</small>
-                                <strong>29</strong>
-                            </div>
+                        {% endfor %}
 
-                            <div class="dia-atual">
-                                <small>Qua</small>
-                                <strong>30</strong>
-                            </div>
-
-                            <div>
-                                <small>Qui</small>
-                                <strong>1</strong>
-                            </div>
-
-                            <div>
-                                <small>Sex</small>
-                                <strong>2</strong>
-                            </div>
-
-                            <div>
-                                <small>Sáb</small>
-                                <strong>3</strong>
-                            </div>
-
-                            <div>
-                                <small>Dom</small>
-                                <strong>4</strong>
-                            </div>
-
-                        </div>
+                    </div>    
 
                         <div class="progresso-semana">
                             <span>0 de 0 tarefas concluídas</span>
