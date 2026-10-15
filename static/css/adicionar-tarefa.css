@@ -336,7 +336,17 @@ main {
     align-items: flex-start;
 }
 
-.timeline-hoje {
+.coluna-esquerda {
+    flex: 2;
+    min-width: 0;
+}
+
+.coluna-direita {
+    flex: 1;
+    min-width: 0;
+}
+
+.coluna-esquerda {
     flex: 2;
     min-height: 465px;
     background-color: white;
