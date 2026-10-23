@@ -1,3 +1,4 @@
+﻿from django.shortcuts import render
 from datetime import timedelta
 from django.utils import timezone
 from django.shortcuts import render
@@ -84,4 +85,9 @@ def inicio(request):
 
 
 def agenda(request):
-    return render(request, "agenda.html")
+  from .models import Aula
+  aulas = Aula.objects.select_related("disciplina").all().order_by("dia_semana","hora_inicio")
+  return render(request, "agenda.html),{"aulas":aulas})
+    from .models import Aula
+    aulas = Aula.objects.select_related("disciplina").all().order_by("dia_semana", "hora_inicio")
+    return render(request, "agenda.html", {"aulas": aulas})
