@@ -84,7 +84,6 @@ def inicio(request):
     return render(request, "index.html")
 
 
- 
 def agenda(request):
     from .models import Aula
 
