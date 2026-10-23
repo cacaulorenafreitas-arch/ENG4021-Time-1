@@ -56,7 +56,7 @@
 
             <div class="pagina-atual">
                 <strong>Hoje</strong>
-                <span>quarta-feira, 30 de setembro</span>
+                <span>{{ data_atual|date:"l, j \d\e F" }}</span>
             </div>
 
             <div class="acoes-superiores">
@@ -80,7 +80,7 @@
                         Abra espaço para o que importa. Comece pelo próximo passo.
                     </span>
                 </div>
-            <a href="adicionar-tarefa.html">
+            <a href="{% url 'adicionar_tarefa' %}">
                 <button>+ Adicionar tarefa</button>
             </a>
             </div>
@@ -108,7 +108,7 @@
                         <span>Para hoje</span>
 
                         <div class="numero-card">
-                            <strong>0</strong>
+                            <strong>{{ pendentes }}</strong>
                             <small>tarefas pendentes</small>
                         </div>
                     </div>
@@ -122,8 +122,8 @@
                         <span>Seu progresso hoje</span>
 
                         <div class="numero-card">
-                            <strong>0</strong>
-                            <small>de 0 concluídas</small>
+                            <strong>{{ concluidas }}</strong>
+                            <small>de {{ total_atividades }} concluídas</small>
                         </div>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                         <span>Para acompanhar</span>
 
                         <div class="numero-card">
-                            <strong>0</strong>
+                            <strong>{{ pendentes }}</strong>
                             <small>tarefas em aberto</small>
                         </div>
                     </div>
@@ -148,38 +148,68 @@
             <!-- PARTE INFERIOR -->
             <div class="area-inferior">
 
-                <div class="timeline-hoje">
+                <div class="coluna-esquerda">
 
                     <div class="topo-timeline">
 
                         <div>
                             <h2>Sua timeline de hoje</h2>
-                            <p>quarta-feira, 30 de setembro</p>
+                            <p>{% now "l, j \d\e F" %}</p>
                         </div>
 
-                        <span>0 atividades</span>
+                        <span>{{ total_atividades }} atividades</span>
 
                     </div>
 
+                    {% if atividades %}
 
-                    <div class="timeline-vazia">
+                        <div class="lista-atividades">
 
-                        <div class="icone-timeline">☷</div>
+                            {% for atividade in atividades %}
 
-                        <h3>Seu dia pode começar por aqui</h3>
+                                <div class="atividade-item">
 
-                        <p>
-                            Adicione uma atividade para hoje e encontre
-                            seu próximo passo.
-                        </p>
-                    <a href="adicionar-tarefa.html">
-                        <button>+ Adicionar uma tarefa</button>
-                    </a>
-                    </div>
+                                    <strong>{{ atividade.titulo }}</strong>
+
+                                    <p>
+                                        {{ atividade.disciplina.nome|default:"Sem disciplina" }}
+                                        — {{ atividade.get_tipo_display }}
+                                    </p>
+
+                                    <small>
+                                         Prazo: {{ atividade.prazo|date:"d/m/Y H:i" }}
+                                        | {{ atividade.get_status_display }}
+                                    </small>
+
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="timeline-vazia">
+
+                            <div class="icone-timeline">☷</div>
+
+                            <h3>Seu dia pode começar por aqui</h3>
+
+                            <p>
+                                Adicione uma atividade para hoje e encontre
+                                seu próximo passo.
+                            </p>
+
+                            <a href="{% url 'adicionar_tarefa' %}">
+                                <button>+ Adicionar uma tarefa</button>
+                            </a>
+
+                        </div>
+
+                    {% endif %}
 
                 </div>
-
-
+            
                 <div class="coluna-direita">
 
                     <div class="proximo-passo">
@@ -211,50 +241,20 @@
                             <span>→</span>
                         </div>
 
-                        <p>28 de set — 4 de out de 2026</p>
+                        <p>{{ inicio_semana|date:"j \d\e M" }} — {{ fim_semana|date:"j \d\e M \d\e Y" }}</p>
 
                         <div class="dias-semana">
-
-                            <div>
-                                <small>Seg</small>
-                                <strong>28</strong>
-                            </div>
-
-                            <div>
-                                <small>Ter</small>
-                                <strong>29</strong>
-                            </div>
-
-                            <div class="dia-atual">
-                                <small>Qua</small>
-                                <strong>30</strong>
-                            </div>
-
-                            <div>
-                                <small>Qui</small>
-                                <strong>1</strong>
-                            </div>
-
-                            <div>
-                                <small>Sex</small>
-                                <strong>2</strong>
-                            </div>
-
-                            <div>
-                                <small>Sáb</small>
-                                <strong>3</strong>
-                            </div>
-
-                            <div>
-                                <small>Dom</small>
-                                <strong>4</strong>
-                            </div>
-
+                            {% for dia in dias_semana %}
+                                <div {% if dia == data_atual %}class="dia-atual"{% endif %}>
+                                    <small>{{ dia|date:"D" }}</small>
+                                    <strong>{{ dia|date:"j" }}</strong>
+                                </div>
+                            {% endfor %}
                         </div>
 
                         <div class="progresso-semana">
-                            <span>0 de 0 tarefas concluídas</span>
-                            <strong>0%</strong>
+                            <span>{{ concluidas }} de {{ total_atividades }} tarefas concluídas</span>
+                            <strong>{{ progresso }}%</strong>
                         </div>
 
                         <p class="link-semana">
@@ -291,23 +291,23 @@
                 </span>
             </div>
 
-            <a href="hoje.html" class="fechar">×</a>
+            <a href="{% url 'hoje' %}" class="fechar">×</a>
 
         </div>
 
 
-        <form>
+        <form method="POST" action="{% url 'adicionar_tarefa' %}">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
 
             <div class="campo">
                 <label for="nome">
                     Nome da tarefa <strong>*</strong>
                 </label>
 
-                <input
-                    id="nome"
-                    type="text"
-                    placeholder="Ex.: Lista de exercícios de Cálculo"
-                >
+                {{ form.titulo }}
+                {{ form.titulo.errors }}
             </div>
 
 
@@ -316,37 +316,29 @@
                     Disciplina <span>opcional</span>
                 </label>
 
-                <input
-                    id="disciplina"
-                    type="text"
-                    placeholder="Ex.: Cálculo I"
-                >
+                {{ form.disciplina }}
+                {{ form.disciplina.errors }}
             </div>
 
 
             <div class="linha">
 
                 <div class="campo">
-                    <label for="data">
+                    <label for="{{ form.data_entrega.id_for_label }}">
                         Data de entrega <strong>*</strong>
                     </label>
 
-                    <input
-                        id="data"
-                        type="date"
-                        value="2026-09-30"
-                    >
+                    {{ form.data_entrega }}
+                    {{ form.data_entrega.errors }}
                 </div>
 
                 <div class="campo">
-                    <label for="horario">
+                    <label for="{{ form.horario.id_for_label }}">
                         Horário <span>opcional</span>
                     </label>
 
-                    <input
-                        id="horario"
-                        type="time"
-                    >
+                    {{ form.horario }}
+                    {{ form.horario.errors }}
                 </div>
 
             </div>
@@ -370,14 +362,8 @@
                     Categoria <strong>*</strong>
                 </label>
 
-                <select id="categoria">
-                    <option selected>Dever de casa</option>
-                    <option>Prova</option>
-                    <option>Projeto</option>
-                    <option>Lembrete</option>
-                    <option>Pessoal</option>
-                    <option>Outro</option>
-                </select>
+                {{ form.tipo }}
+                {{ form.tipo.errors }}
             </div>
 
 
@@ -442,7 +428,7 @@
 
             <div class="botoes">
 
-                <a href="hoje.html" class="cancelar">
+                <a href="{% url 'hoje' %}" class="cancelar">
                     Cancelar
                 </a>
 

@@ -191,7 +191,7 @@ class Aula(models.Model):
     hora_fim = models.TimeField()
     local = models.CharField(max_length=120, blank=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.disciplina} - {self.hora_inicio}"
 
 
@@ -203,7 +203,7 @@ class Execucao(models.Model):
     concluido_em = models.DateTimeField(null=True, blank=True)
     desvio_percentual = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"Execução da atividade {self.atividade_id}"
 
 
@@ -214,5 +214,5 @@ class AlertaCarga(models.Model):
     recomendacao = models.TextField(blank=True)
     gerado_em = models.DateTimeField(auto_now_add=True)
 
-    def _str_(self):
+    def __str__(self):
         return f"Alerta de carga {self.planejamento_id} - {self.nivel}"
