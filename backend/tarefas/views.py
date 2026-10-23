@@ -1,4 +1,4 @@
-from django.shortcuts import render
+﻿from django.shortcuts import render
 
 
 def hoje(request):
@@ -12,4 +12,6 @@ def inicio(request):
     return render(request, "index.html")
 
 def agenda(request):
-    return render(request, "agenda.html")
+    from .models import Aula
+    aulas = Aula.objects.select_related("disciplina").all().order_by("dia_semana", "hora_inicio")
+    return render(request, "agenda.html", {"aulas": aulas})

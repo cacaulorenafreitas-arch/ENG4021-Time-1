@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -108,5 +108,19 @@
     });
   </script>
 
+<section class="box" style="margin:20px;">
+  <h3>Aulas cadastradas</h3>
+  {% for aula in aulas %}
+    <p>
+      <strong>{{ aula.disciplina.nome }}</strong> -
+      Dia {{ aula.dia_semana }} -
+      {{ aula.hora_inicio|time:"H:i" }} às {{ aula.hora_fim|time:"H:i" }} -
+      {{ aula.local }}
+    </p>
+  {% empty %}
+    <p>Nenhuma aula cadastrada.</p>
+  {% endfor %}
+</section>
 </body>
 </html>
+
