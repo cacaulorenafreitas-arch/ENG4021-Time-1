@@ -24,5 +24,7 @@ urlpatterns = [
     path("hoje/", views.hoje, name="hoje"),
     path("adicionar-tarefa/", views.adicionar_tarefa, name="adicionar_tarefa"),
     path("", views.inicio, name="inicio"),
-    path("agenda/", views.agenda, name="agenda"),
+    path("agenda/", views.agenda, name="agenda"), 
+    path("minhas_tarefas/", views.minhas_tarefas, name = "minhas_tarefas",
+    ),
 ]
