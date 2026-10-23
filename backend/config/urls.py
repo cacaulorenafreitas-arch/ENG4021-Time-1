@@ -17,9 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from tarefas import views
+from tarefas import views, views_cacau
 
 urlpatterns = [
+    path("notificacoes/", views_cacau.notificacoes, name="notificacoes"),
+    path("progresso/", views_cacau.progresso, name="progresso"),
+    path("cadastrar-atividade-cacau/", views_cacau.cadastrar_atividade_cacau, name="cadastrar_atividade_cacau"),
     path("admin/", admin.site.urls),
     path("hoje/", views.hoje, name="hoje"),
     path("adicionar-tarefa/", views.adicionar_tarefa, name="adicionar_tarefa"),
