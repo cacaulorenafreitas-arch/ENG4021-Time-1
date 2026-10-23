@@ -85,7 +85,7 @@ def inicio(request):
 
 
  
- def agenda(request):
+def agenda(request):
     from .models import Aula
 
     aulas = (
