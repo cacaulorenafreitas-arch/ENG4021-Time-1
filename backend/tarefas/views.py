@@ -87,7 +87,6 @@ def inicio(request):
 def agenda(request):
   from .models import Aula
   aulas = Aula.objects.select_related("disciplina").all().order_by("dia_semana","hora_inicio")
-  return render(request, "agenda.html),{"aulas":aulas})
-    from .models import Aula
-    aulas = Aula.objects.select_related("disciplina").all().order_by("dia_semana", "hora_inicio")
-    return render(request, "agenda.html", {"aulas": aulas})
+  return render(request, "agenda.html", {"aulas": aulas})
+
+
