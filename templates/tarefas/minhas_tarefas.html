@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minhas tarefas | Timeline</title>
+</head>
+<body>
+    <header>
+        <h1>Minhas tarefas</h1>
+        <p>Olá, {{ request.user.username }}!</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Cadastrar tarefa</h2>
+
+            <form method="post" action="{% url 'minhas_tarefas' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit">Salvar tarefa</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Tarefas cadastradas</h2>
+
+            {% for tarefa in tarefas %}
+                <article>
+                    <h3>{{ tarefa.title }}</h3>
+
+                    <p>
+                        Disciplina:
+                        {{ tarefa.subject|default:"Não informada" }}
+                    </p>
+
+                    <p>
+                        Entrega: {{ tarefa.due_date|date:"d/m/Y" }}
+
+                        {% if tarefa.due_time %}
+                            às {{ tarefa.due_time }}
+                        {% endif %}
+                    </p>
+
+                    <p>
+                        Prioridade: {{ tarefa.get_priority_display }}
+                    </p>
+
+                    <p>
+                        Status:
+                        {% if tarefa.completed %}
+                            Concluída
+                        {% else %}
+                            Pendente
+                        {% endif %}
+                    </p>
+                </article>
+            {% empty %}
+                <p>Você ainda não tem tarefas cadastradas.</p>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

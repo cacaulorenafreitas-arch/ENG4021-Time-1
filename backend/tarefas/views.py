@@ -5,7 +5,7 @@ from .models import Atividade
 from django.shortcuts import redirect
 from .forms import AtividadeForm
 from datetime import datetime, time
-
+from django.contrib.auth.decorators import login_required
 
 def hoje(request):
     atividades = Atividade.objects.all().order_by("prazo")
@@ -85,3 +85,37 @@ def inicio(request):
 
 def agenda(request):
     return render(request, "agenda.html")
+    from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .models import Tarefa
+from .forms import TarefaForm
+
+
+@login_required(login_url="/admin/login/")
+def minhas_tarefas(request):
+    owner_id = f"admin:{request.user.pk}"
+
+    if request.method == "POST":
+        form = TarefaForm(
+            request.POST,
+            owner_id=owner_id,
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect("minhas_tarefas")
+    else:
+        form = TarefaForm(owner_id=owner_id)
+
+    tarefas = Tarefa.objects.filter(
+        owner_id=owner_id
+    ).order_by("due_date", "due_time")
+
+    return render(
+        request,
+        "tarefas/minhas_tarefas.html",
+        {
+            "form": form,
+            "tarefas": tarefas,
+        },
+    )

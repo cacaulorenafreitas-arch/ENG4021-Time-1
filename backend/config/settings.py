@@ -125,3 +125,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS = [
+        "https://localhost:8000",
+        "https://ominous-system-r7ppjqqgg9wqfvg6-8000.app.github.dev"
+    ]
