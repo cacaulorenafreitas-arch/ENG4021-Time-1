@@ -5,6 +5,9 @@ from .models import (
     Compromisso,
     Planejamento,
     Tarefa,
+    Aula,
+    Execucao,
+    AlertaCarga,
 )
 
 admin.site.register(Atividade)
@@ -32,3 +35,6 @@ class TarefaAdmin(admin.ModelAdmin):
 
         return FormularioTarefa
         
+admin.site.register(Aula)
+admin.site.register(Execucao)
+admin.site.register(AlertaCarga)

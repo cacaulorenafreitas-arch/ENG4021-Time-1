@@ -1,3 +1,4 @@
+﻿from django.shortcuts import render
 from datetime import timedelta
 from django.utils import timezone
 from django.shortcuts import render
@@ -83,9 +84,25 @@ def inicio(request):
     return render(request, "index.html")
 
 
-def agenda(request):
-    return render(request, "agenda.html")
-    from django.contrib.auth.decorators import login_required
+ 
+ def agenda(request):
+    from .models import Aula
+
+    aulas = (
+        Aula.objects
+        .select_related("disciplina")
+        .all()
+        .order_by("dia_semana")
+    )
+
+    return render(
+        request,
+        "agenda.html",
+        {"aulas": aulas},
+    )
+
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import Tarefa
 from .forms import TarefaForm
@@ -119,3 +136,4 @@ def minhas_tarefas(request):
             "tarefas": tarefas,
         },
     )
+

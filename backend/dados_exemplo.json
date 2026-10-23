@@ -1,0 +1,68 @@
+[
+{
+  "model": "tarefas.disciplina",
+  "pk": 1,
+  "fields": {
+    "periodo_id": 1,
+    "nome": "Calculo I",
+    "codigo": "MAT1161",
+    "professor": "Professor Exemplo",
+    "cor_hex": "#4285F4"
+  }
+},
+{
+  "model": "tarefas.disciplina",
+  "pk": 2,
+  "fields": {
+    "periodo_id": 1,
+    "nome": "Fisica I",
+    "codigo": "FIS4001",
+    "professor": "Professor Exemplo",
+    "cor_hex": "#34A853"
+  }
+},
+{
+  "model": "tarefas.disciplina",
+  "pk": 3,
+  "fields": {
+    "periodo_id": 1,
+    "nome": "Algebra Linear",
+    "codigo": "MAT1200",
+    "professor": "Professor Exemplo",
+    "cor_hex": "#EA4335"
+  }
+},
+{
+  "model": "tarefas.aula",
+  "pk": 1,
+  "fields": {
+    "disciplina": 1,
+    "dia_semana": 1,
+    "hora_inicio": "09:00:00",
+    "hora_fim": "11:00:00",
+    "local": "Sala 201 - PUC-RIo"
+  }
+},
+{
+  "model": "tarefas.aula",
+  "pk": 2,
+  "fields": {
+    "disciplina": 2,
+    "dia_semana": 2,
+    "hora_inicio": "10:00:00",
+    "hora_fim": "12:00:00",
+    "local": "Sala 202 - PUC-Rio"
+  }
+},
+{
+  "model": "tarefas.aula",
+  "pk": 3,
+  "fields": {
+    "disciplina": 3,
+    "dia_semana": 3,
+    "hora_inicio": "13:00:00",
+    "hora_fim": "15:00:00",
+    "local": "Sala 203 - PUC-Rio"
+  }
+}
+]
