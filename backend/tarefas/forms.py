@@ -64,4 +64,58 @@ class TarefaForm(forms.ModelForm):
                 attrs={"type": "time"},
             ),
         }
-        
+
+
+from .models import Compromisso
+
+
+class CompromissoForm(forms.ModelForm):
+    CATEGORIAS = [
+        ("Estudo", "Estudo"),
+        ("Academia", "Academia"),
+        ("Estágio", "Estágio"),
+        ("Pessoal", "Pessoal"),
+        ("Outro", "Outro"),
+    ]
+
+    categoria = forms.ChoiceField(label="Categoria", choices=CATEGORIAS)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for campo in ("inicio", "fim"):
+            self.fields[campo].input_formats = ["%Y-%m-%dT%H:%M", "%Y-%m-%d %H:%M"]
+
+    class Meta:
+        model = Compromisso
+        fields = ["titulo", "categoria", "inicio", "fim", "flexivel"]
+
+        labels = {
+            "titulo": "Nome do compromisso",
+            "inicio": "Início",
+            "fim": "Fim",
+            "flexivel": "Horário flexível (pode ser remarcado)",
+        }
+
+        widgets = {
+            "titulo": forms.TextInput(attrs={
+                "placeholder": "Ex.: Academia"
+            }),
+            "inicio": forms.DateTimeInput(
+                format="%Y-%m-%dT%H:%M",
+                attrs={"type": "datetime-local"},
+            ),
+            "fim": forms.DateTimeInput(
+                format="%Y-%m-%dT%H:%M",
+                attrs={"type": "datetime-local"},
+            ),
+        }
+
+    def clean(self):
+        dados = super().clean()
+        inicio = dados.get("inicio")
+        fim = dados.get("fim")
+
+        if inicio and fim and fim <= inicio:
+            self.add_error("fim", "O fim precisa ser depois do início.")
+
+        return dados
